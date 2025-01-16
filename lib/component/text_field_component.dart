@@ -64,8 +64,8 @@ class _TextFieldComponentState extends State<TextFieldComponent> {
   void initState() {
     super.initState();
     if (widget.isReadOnly) {
-      widget.fillColor = Color(0xffF4F4F4);
-      widget.borderColor = Color(0xffF4F4F4);
+      widget.fillColor = const Color(0xffF4F4F4);
+      widget.borderColor = const Color(0xffF4F4F4);
     }
     changeObsecureStatus = widget.hasShowPasswordIcon;
   }
@@ -93,7 +93,7 @@ class _TextFieldComponentState extends State<TextFieldComponent> {
             : (context, {currentLength = 1, maxLength, isFocused = false}) {
                 return Text(
                   '$currentLength/$maxLength',
-                  style: TextStyle(color: AppColors.primaryColor),
+                  style: const TextStyle(color: AppColors.primaryColor),
                 );
               },
         autovalidateMode: AutovalidateMode.onUserInteraction,

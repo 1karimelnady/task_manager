@@ -2,10 +2,10 @@ import 'package:task_manager/features/auth/domain/entities/user_entity.dart';
 
 class UserModel extends User {
   UserModel({
-    required int id,
-    required String username,
-    required String email,
-  }) : super(id: id, username: username, email: email);
+    required super.id,
+    required super.username,
+    required super.email,
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

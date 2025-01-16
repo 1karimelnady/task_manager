@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:task_manager/core/constants/app_constants.dart';
 
 class AuthRemoteDataSource {
   final Dio _dio = Dio();

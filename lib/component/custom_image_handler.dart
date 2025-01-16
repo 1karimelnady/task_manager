@@ -9,7 +9,7 @@ import 'package:task_manager/core/utils/app_colors.dart';
 class CustomImageHandler extends StatelessWidget {
   const CustomImageHandler(
     this.path, {
-    Key? key,
+    super.key,
     this.fit = BoxFit.contain,
     this.height,
     this.width,

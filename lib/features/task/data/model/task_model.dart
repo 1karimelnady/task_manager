@@ -2,10 +2,10 @@ import '../../domain/entities/task_entity.dart';
 
 class TaskModel extends TaskEntity {
   const TaskModel({
-    required int id,
-    required String title,
-    required bool completed,
-  }) : super(id: id, title: title, completed: completed);
+    required super.id,
+    required super.title,
+    required super.completed,
+  });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
