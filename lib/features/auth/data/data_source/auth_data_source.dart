@@ -1,21 +1,23 @@
 import 'package:dio/dio.dart';
 
 class AuthRemoteDataSource {
-  final Dio _dio = Dio();
+  final Dio dio;
 
-  AuthRemoteDataSource() {
-    _dio.options.baseUrl = 'https://dummyjson.com';
-    _dio.options.headers = {
+  AuthRemoteDataSource({Dio? dio}) : dio = dio ?? Dio() {
+    this.dio.options.baseUrl = 'https://dummyjson.com';
+    this.dio.options.headers = {
       'Content-Type': 'application/json',
     };
 
-    _dio.interceptors
+    this
+        .dio
+        .interceptors
         .add(LogInterceptor(responseBody: true, requestBody: true));
   }
 
   Future<Map<String, dynamic>> login(String username, String password) async {
     try {
-      final response = await _dio.post(
+      final response = await dio.post(
         '/auth/login',
         data: {
           'username': username,

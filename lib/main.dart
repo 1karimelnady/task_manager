@@ -5,6 +5,7 @@ import 'package:task_manager/features/auth/data/data_source/auth_data_source.dar
 import 'package:task_manager/features/auth/data/repositories/auth_repositories_impl.dart';
 import 'package:task_manager/features/auth/presentaion/bloc/auth/auth_bloc.dart';
 import 'package:task_manager/features/auth/presentaion/pages/login_page.dart';
+import 'package:task_manager/features/splash_screen.dart';
 import 'package:task_manager/features/task/data/data_sources/task_local_data_source.dart';
 import 'package:task_manager/features/task/data/data_sources/task_remote_data_source.dart';
 import 'package:task_manager/features/task/data/repositories/task_repositories_impl.dart';
@@ -67,10 +68,10 @@ class MyApp extends StatelessWidget {
                         remoteDataSource: TaskRemoteDataSource()))),
           ),
         ],
-        child: MaterialApp(
+        child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: LoginPage(),
+          home: SplashScreen(),
         ),
       ),
     );

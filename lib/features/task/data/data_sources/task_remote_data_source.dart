@@ -2,20 +2,22 @@ import 'package:dio/dio.dart';
 import 'package:task_manager/features/task/data/model/task_model.dart';
 
 class TaskRemoteDataSource {
-  final Dio _dio = Dio();
+  final Dio dio;
 
-  TaskRemoteDataSource() {
-    _dio.options.baseUrl = 'https://dummyjson.com';
-    _dio.options.headers = {
+  TaskRemoteDataSource({Dio? dio}) : dio = dio ?? Dio() {
+    this.dio.options.baseUrl = 'https://dummyjson.com';
+    this.dio.options.headers = {
       'Content-Type': 'application/json',
     };
-    _dio.interceptors
+    this
+        .dio
+        .interceptors
         .add(LogInterceptor(responseBody: true, requestBody: true));
   }
 
   Future<List<TaskModel>> fetchTasks({int limit = 10, int skip = 0}) async {
     try {
-      final response = await _dio.get(
+      final response = await dio.get(
         '/todos',
         queryParameters: {'limit': limit, 'skip': skip},
       );
@@ -29,7 +31,7 @@ class TaskRemoteDataSource {
 
   Future<TaskModel> addTask(TaskModel task) async {
     try {
-      final response = await _dio.post(
+      final response = await dio.post(
         '/todos/add',
         data: {
           'todo': task.title,
@@ -45,7 +47,7 @@ class TaskRemoteDataSource {
 
   Future<TaskModel> updateTask(TaskModel task) async {
     try {
-      final response = await _dio.put(
+      final response = await dio.put(
         '/todos/${task.id}',
         data: {
           'todo': task.title,
@@ -61,7 +63,7 @@ class TaskRemoteDataSource {
 
   Future<void> deleteTask(int id) async {
     try {
-      await _dio.delete('/todos/$id');
+      await dio.delete('/todos/$id');
     } on DioException catch (e) {
       throw Exception('Dio Error: ${e.message}');
     }

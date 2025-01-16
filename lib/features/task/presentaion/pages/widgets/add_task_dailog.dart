@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:task_manager/core/utils/app_colors.dart';
 import 'package:task_manager/features/task/domain/entities/task_entity.dart';
 import 'package:task_manager/features/task/presentaion/bloc/task_bloc.dart';
 import 'package:task_manager/features/task/presentaion/bloc/task_event.dart';
@@ -32,6 +34,13 @@ class AddTaskDialog extends StatelessWidget {
               completed: false,
             );
             BlocProvider.of<TaskBloc>(context).add(AddTaskEvent(newTask));
+            Fluttertoast.showToast(
+              msg: "Task added successfully!",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: AppColors.greenColor,
+              textColor: Colors.white,
+            );
             taskController.clear();
             Navigator.of(context).pop();
           },
